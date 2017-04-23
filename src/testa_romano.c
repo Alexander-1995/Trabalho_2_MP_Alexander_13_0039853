@@ -31,5 +31,8 @@ TEST_CASE( "Conversão Romano para Arábico números válidos", "[roman_to_arab]
 
 TEST_CASE("Conversão Romano para Arábico inválidos","[roman_to_arab]"){ /*Conjunto de teste de números INVÁLIDOS(todos devem retornar -1)*/
     REQUIRE( roman_to_arab((char*)"asfdn") == -1 );    /*!Testa entrada de uma string que não é um número romano*/
+    REQUIRE( roman_to_arab((char*)"LVV") == -1 );      /*!Testa o caso do componente do número não válido "VV"*/
+    REQUIRE( roman_to_arab((char*)"CLL") == -1 );      /*1Testa o caso do componente do número não válido "LL"*/
+    REQUIRE( roman_to_arab((char*)"MDD") == -1 );      /*!Testa o caso do componente do número não válido "DD"*/
 
 }

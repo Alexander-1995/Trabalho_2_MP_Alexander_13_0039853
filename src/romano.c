@@ -38,6 +38,19 @@ int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
             }
     }
 
+    for(i=0; i<tam; i++){/*!Caso nro 3 para impedir LL*/ 
+        if (nro_rom[i] == 'L' & nro_rom[i+1] == 'L'){  
+            return(-1);
+            }
+    }           
+
+    for(i=0; i<tam; i++){/*!Caso nro 4 para impedir DD*/
+        if (nro_rom[i] == 'D' & nro_rom[i+1] == 'D'){   
+            return(-1);
+            }
+    }   
+
+
     j = aux[tam-1];
     for(i=tam-1; i>0; i--){
         if(aux[i]>aux[i-1]){
