@@ -34,5 +34,9 @@ TEST_CASE("Conversão Romano para Arábico inválidos","[roman_to_arab]"){ /*Con
     REQUIRE( roman_to_arab((char*)"LVV") == -1 );      /*!Testa o caso do componente do número não válido "VV"*/
     REQUIRE( roman_to_arab((char*)"CLL") == -1 );      /*1Testa o caso do componente do número não válido "LL"*/
     REQUIRE( roman_to_arab((char*)"MDD") == -1 );      /*!Testa o caso do componente do número não válido "DD"*/
+    REQUIRE( roman_to_arab((char*)"XIIII") == -1 );    /*!Testa o caso do componente do número não válido "IIII"*/
+    REQUIRE( roman_to_arab((char*)"LXXXX") == -1 );    /*!Testa o caso do componente do número não válido "XXXX"*/
+    REQUIRE( roman_to_arab((char*)"MCCCC") == -1 );    /*!Testa o caso do componente do número não válido "CCCC"*/
+    REQUIRE( roman_to_arab((char*)"MMMM") == -1 );     /*!Testa o caso do componente do número não válido "MMMM"*/
 
 }
