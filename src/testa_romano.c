@@ -28,3 +28,8 @@ TEST_CASE( "Conversão Romano para Arábico números válidos", "[roman_to_arab]
 	REQUIRE( roman_to_arab((char*)"MMDCCCLXXXVIII") == 2888 );   /*!Teste onde a entrada MMDCCCLXXXVIII deve ser igual a saída 2888*/
 
 }
+
+TEST_CASE("Conversão Romano para Arábico inválidos","[roman_to_arab]"){ /*Conjunto de teste de números INVÁLIDOS(todos devem retornar -1)*/
+    REQUIRE( roman_to_arab((char*)"asfdn") == -1 );    /*!Testa entrada de uma string que não é um número romano*/
+
+}

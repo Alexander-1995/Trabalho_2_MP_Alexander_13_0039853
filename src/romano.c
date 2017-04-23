@@ -30,6 +30,14 @@ int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
         }
     }
 
+    /*!Impedir as letras "V,L,D" duplicadas, pois podem ser representadas por "X,C,M" respectivamente*/
+    
+    for(i=0; i<tam; i++){/*!Caso nro 2 para impedir VV*/  
+        if (nro_rom[i] == 'V' & nro_rom[i+1] == 'V'){ 
+            return(-1);
+            }
+    }
+
     j = aux[tam-1];
     for(i=tam-1; i>0; i--){
         if(aux[i]>aux[i-1]){
