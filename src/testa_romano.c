@@ -38,5 +38,17 @@ TEST_CASE("Conversão Romano para Arábico inválidos","[roman_to_arab]"){ /*Con
     REQUIRE( roman_to_arab((char*)"LXXXX") == -1 );    /*!Testa o caso do componente do número não válido "XXXX"*/
     REQUIRE( roman_to_arab((char*)"MCCCC") == -1 );    /*!Testa o caso do componente do número não válido "CCCC"*/
     REQUIRE( roman_to_arab((char*)"MMMM") == -1 );     /*!Testa o caso do componente do número não válido "MMMM"*/
+    REQUIRE( roman_to_arab((char*)"DIIV") == -1 );     /*!Testa o caso do componente do número não válido "IIV"*/
+    REQUIRE( roman_to_arab((char*)"LIIX") == -1 );     /*!Testa o caso do componente do número não válido "IIX"*/
+    REQUIRE( roman_to_arab((char*)"LIIL") == -1 );     /*!Testa o caso do componente do número não válido "IIL"*/
+    REQUIRE( roman_to_arab((char*)"DIIIV") == -1 );    /*!Testa o caso do componente do número não válido "IIIX"*/
+    REQUIRE( roman_to_arab((char*)"CIIIX") == -1 );    /*!Testa o caso do componente do número não válido "IIIV"*/
+    REQUIRE( roman_to_arab((char*)"CIIIL") == -1 );    /*!Testa o caso do componente do número não válido "IIIL"*/
+    REQUIRE( roman_to_arab((char*)"DIIC") == -1 );     /*!Testa o caso do componente do número não válido "IIC"*/
+    REQUIRE( roman_to_arab((char*)"LIID") == -1 );     /*!Testa o caso do componente do número não válido "IID"*/
+    REQUIRE( roman_to_arab((char*)"LIIM") == -1 );     /*!Testa o caso do componente do número não válido "IIM"*/
+    REQUIRE( roman_to_arab((char*)"DIIIC") == -1 );    /*!Testa o caso do componente do número não válido "IIIC"*/
+    REQUIRE( roman_to_arab((char*)"CIIID") == -1 );    /*!Testa o caso do componente do número não válido "IIID"*/
+    REQUIRE( roman_to_arab((char*)"CIIIM") == -1 );    /*!Testa o caso do componente do número não válido "IIIM"*/
 
 }

@@ -76,6 +76,44 @@ int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
             }
     }  
 
+    /*!Impedir casos especiais*/
+
+    for(i=0; i<tam; i++){ /*!Caso nro 9 para impedir IIV e IIIV*/
+        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'V' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'V'){
+            return(-1);
+            }
+    }    
+
+    for(i=0; i<tam; i++){ /*!Caso nro 10 para impedir IIX e IIIX*/
+        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'X' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'X'){
+            return(-1);
+            }
+    }
+
+       for(i=0; i<tam; i++){/*!Caso nro 11 para impedir IIL e IIIL*/
+        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'L' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'L'){
+            return(-1);
+            }
+    }    
+
+    for(i=0; i<tam; i++){/*!Caso nro 12 para impedir IIC e IIIC*/
+        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'C' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'C'){
+            return(-1);
+            }
+    }        
+
+    for(i=0; i<tam; i++){/*!Caso nro 13 para impedir IID e IIID*/
+        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'D' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'D'){
+            return(-1);
+            }
+    }    
+
+    for(i=0; i<tam; i++){/*!Caso nro 14 para impedir IIM e IIIM*/
+        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'M' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'M'){
+            return(-1);
+            }
+    }    
+
 
     j = aux[tam-1];
     for(i=tam-1; i>0; i--){
