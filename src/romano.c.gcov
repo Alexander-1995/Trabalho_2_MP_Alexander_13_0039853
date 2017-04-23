@@ -1,0 +1,217 @@
+        -:    0:Source:romano.c
+        -:    0:Graph:obj/romano.gcno
+        -:    0:Data:obj/romano.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "romano.h" /*!Inclusão da biblioteca romano.h.*/
+        -:    2:
+       73:    3:int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
+        -:    4:                                                Recebe um número Romano e converte para Arábico
+        -:    5:                                            */    
+        -:    6:
+        -:    7:    int aux[30]; /*!< Variável auxiliar para fazer a conversão.*/
+        -:    8:    int tam; /*!< Variável para armazenar o tamanho da string.*/
+        -:    9:    int i;/*!< Variável utilizar como contador.*/
+        -:   10:    int j;/*!< Variável utilizar como contador.*/                                            
+       73:   11:    tam = strlen(nro_rom);
+        -:   12:    
+      394:   13:    for(i=0; i<tam; i++){
+      322:   14:        if(nro_rom[i] == 'I'){
+       66:   15:            aux[i] = 1;
+      256:   16:        }else if(nro_rom[i] == 'V'){
+       19:   17:            aux[i] = 5;
+      237:   18:        }else if (nro_rom[i] == 'X'){
+       66:   19:            aux[i] = 10;
+      171:   20:        }else if (nro_rom[i] == 'L'){
+       32:   21:            aux[i] = 50;
+      139:   22:        }else if (nro_rom[i] == 'C'){
+       54:   23:            aux[i] = 100;
+       85:   24:        }else if (nro_rom[i] == 'D'){
+       30:   25:            aux[i] = 500;
+       55:   26:        }else if (nro_rom[i] == 'M'){
+       54:   27:            aux[i] = 1000;             
+        -:   28:        }else{
+        1:   29:            return(-1);   /*!Caso nro 1 se não for letra maiúscula ou se for diferente de "I,V,X,L,C,D,M"*/
+        -:   30:        }
+        -:   31:    }
+        -:   32:
+        -:   33:
+        -:   34:
+        -:   35:/*!Impedir as letras "V,L,D" duplicadas, pois podem ser representadas por "X,C,M" respectivamente*/
+        -:   36:    
+      391:   37:    for(i=0; i<tam; i++){/*!Caso nro 2 para impedir VV*/  
+      320:   38:        if (nro_rom[i] == 'V' & nro_rom[i+1] == 'V'){ 
+        1:   39:            return(-1);
+        -:   40:            }
+        -:   41:    }
+        -:   42:
+      387:   43:    for(i=0; i<tam; i++){/*!Caso nro 3 para impedir LL*/ 
+      317:   44:        if (nro_rom[i] == 'L' & nro_rom[i+1] == 'L'){  
+        1:   45:            return(-1);
+        -:   46:            }
+        -:   47:    }           
+        -:   48:
+      383:   49:    for(i=0; i<tam; i++){/*!Caso nro 4 para impedir DD*/
+      314:   50:        if (nro_rom[i] == 'D' & nro_rom[i+1] == 'D'){   
+        1:   51:            return(-1);
+        -:   52:            }
+        -:   53:    }   
+        -:   54:
+        -:   55:/*!Caso para impedir que a letra seja representada 4 vezes seguidas, por exemplo: "IIII","XXXX","CCCC","MMMM"*/
+        -:   56:
+      377:   57:    for(i=0; i<tam; i++){ /*!Caso nro 5 para impedir IIII*/
+      309:   58:        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'I'){
+        1:   59:            return(-1);
+        -:   60:            }
+        -:   61:    }
+        -:   62:   
+      371:   63:    for(i=0; i<tam; i++){ /*!Caso nro 6 para impedir XXXX*/
+      304:   64:        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'X'){  
+        1:   65:            return(-1);
+        -:   66:            }
+        -:   67:    }
+        -:   68:
+      365:   69:    for(i=0; i<tam; i++){/*!Caso nro 7 para impedir CCCC*/
+      299:   70:        if (nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'C' & nro_rom[i+3] == 'C'){
+        1:   71:            return(-1);
+        -:   72:            }
+        -:   73:    }        
+        -:   74:
+      359:   75:    for(i=0; i<tam; i++){  /*!Caso nro 8 para impedir MMMM*/
+      294:   76:        if (nro_rom[i] == 'M' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'M' & nro_rom[i+3] == 'M'){
+        1:   77:            return(-1);
+        -:   78:            }
+        -:   79:    }        
+        -:   80:
+        -:   81:    /*!Impedir casos especiais*/
+        -:   82:
+      351:   83:    for(i=0; i<tam; i++){ /*!Caso nro 9 para impedir IIV e IIIV*/
+      288:   84:        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'V' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'V'){
+        2:   85:            return(-1);
+        -:   86:            }
+        -:   87:    }    
+        -:   88:
+      340:   89:    for(i=0; i<tam; i++){ /*!Caso nro 10 para impedir IIX e IIIX*/
+      279:   90:        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'X' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'X'){
+        2:   91:            return(-1);
+        -:   92:            }
+        -:   93:    }
+        -:   94:
+      329:   95:       for(i=0; i<tam; i++){/*!Caso nro 11 para impedir IIL e IIIL*/
+      270:   96:        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'L' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'L'){
+        2:   97:            return(-1);
+        -:   98:            }
+        -:   99:    }    
+        -:  100:
+      318:  101:    for(i=0; i<tam; i++){/*!Caso nro 12 para impedir IIC e IIIC*/
+      261:  102:        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'C' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'C'){
+        2:  103:            return(-1);
+        -:  104:            }
+        -:  105:    }        
+        -:  106:
+      307:  107:    for(i=0; i<tam; i++){/*!Caso nro 13 para impedir IID e IIID*/
+      252:  108:        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'D' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'D'){
+        2:  109:            return(-1);
+        -:  110:            }
+        -:  111:    }    
+        -:  112:
+      296:  113:    for(i=0; i<tam; i++){/*!Caso nro 14 para impedir IIM e IIIM*/
+      243:  114:        if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'M' || nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'M'){
+        2:  115:            return(-1);
+        -:  116:            }
+        -:  117:    }    
+        -:  118:
+        -:  119:
+      290:  120:    for(i=0; i<tam; i++){  /*!Caso nro 15 para impedir VX*/
+      238:  121:        if (nro_rom[i] == 'V' & nro_rom[i+1] == 'X' ){  
+        1:  122:            return(-1);
+        -:  123:            }
+        -:  124:    }                 
+        -:  125:
+      273:  126:    for(i=0; i<tam; i++){/*!Caso nro 16 para impedir VIX, VIL, VIC, VID, VIM*/
+      226:  127:        if (nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'X' || nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'L' || nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'C' || nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'D' || nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'M'){ 
+        5:  128:            return(-1);
+        -:  129:            }
+        -:  130:    }        
+        -:  131:
+      256:  132:    for(i=0; i<tam; i++){/*!Caso nro 17 para impedir XXL e XXXL*/
+      211:  133:        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'L' || nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'L'){
+        2:  134:            return(-1);
+        -:  135:            }
+        -:  136:    }    
+        -:  137:
+      245:  138:    for(i=0; i<tam; i++){/*!Caso nro 18 para impedir XXC e XXXC*/
+      202:  139:        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'C' || nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'C'){
+        2:  140:            return(-1);
+        -:  141:            }
+        -:  142:    }        
+        -:  143:
+      234:  144:    for(i=0; i<tam; i++){/*1Caso nro 19 para impedir XXD e XXXD*/
+      193:  145:        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'D' || nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'D'){
+        2:  146:            return(-1);
+        -:  147:            }
+        -:  148:    }    
+        -:  149:
+      223:  150:    for(i=0; i<tam; i++){/*!Caso nro 20 para impedir XXM e XXXM*/
+      184:  151:        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'M' || nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'M'){
+        2:  152:            return(-1);
+        -:  153:            }
+        -:  154:    }   
+        -:  155:
+      212:  156:    for(i=0; i<tam; i++){/*!Caso nro 21 para impedir CCD e CCCD*/
+      175:  157:        if (nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'C' & nro_rom[i+3] == 'D' || nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'D'){
+        2:  158:            return(-1);
+        -:  159:            }
+        -:  160:    }   
+        -:  161:
+      201:  162:    for(i=0; i<tam; i++){/*!Caso nro 22 para impedir CCM e CCCM*/
+      166:  163:        if (nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'C' & nro_rom[i+3] == 'M' || nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'M'){
+        2:  164:            return(-1);
+        -:  165:            }
+        -:  166:    }   
+        -:  167:
+      185:  168:    for(i=0; i<tam; i++){ /*!Caso nro 23 para impedir XLX,XCX,XDX,XMX*/
+      154:  169:        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'L' & nro_rom[i+2] == 'X' || nro_rom[i] == 'X' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'X' || nro_rom[i] == 'X' & nro_rom[i+1] == 'D' & nro_rom[i+2] == 'X' || nro_rom[i] == 'X' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'X'){ 
+        4:  170:            return(-1);
+        -:  171:            }
+        -:  172:    }
+        -:  173:
+      168:  174:    for(i=0; i<tam; i++){ /*!Caso nro 24 para impedir LCL,LDL,LML*/
+      140:  175:        if (nro_rom[i] == 'L' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'L' || nro_rom[i] == 'L' & nro_rom[i+1] == 'D' & nro_rom[i+2] == 'L' || nro_rom[i] == 'L' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'L'){ 
+        3:  176:            return(-1);
+        -:  177:            }
+        -:  178:    }      
+        -:  179:
+      156:  180:    for(i=0; i<tam; i++){ /*!Caso nro 25 para impedir CDC,CMC*/
+      130:  181:        if (nro_rom[i] == 'C' & nro_rom[i+1] == 'D' & nro_rom[i+2] == 'C' || nro_rom[i] == 'C' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'C'){ 
+        2:  182:            return(-1);
+        -:  183:            }
+        -:  184:    } 
+        -:  185:
+      149:  186:    for(i=0; i<tam; i++){ /*!Caso nro 26 para impedir DMD*/
+      124:  187:        if (nro_rom[i] == 'D' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'D'){ 
+        1:  188:            return(-1);
+        -:  189:            }
+        -:  190:    }                    
+        -:  191:
+      137:  192:    for(i=0; i<tam; i++){/*!Caso nro 27 para impedir XXIXX e CCICC*/
+      114:  193:        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'X' & nro_rom[i+4] == 'X'|| nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'C' & nro_rom[i+4] == 'C'){
+        2:  194:            return(-1);
+        -:  195:            }
+        -:  196:    }
+        -:  197:
+       23:  198:    j = aux[tam-1];
+      112:  199:    for(i=tam-1; i>0; i--){
+       89:  200:        if(aux[i]>aux[i-1]){
+       10:  201:            j = j-aux[i-1];
+       79:  202:        }else if(aux[i]<aux[i-1] || aux[i]==aux[i-1]){
+       79:  203:            j = aux[i-1] + j;
+        -:  204:        }
+        -:  205:    }
+        -:  206:
+       23:  207:    if(j>3000 || j<0){/*!Caso nro 28 se o número for maior que 3000, ou menor que 1, retorna -1, pois conforme a especificação, os números devem ir até 3000*/
+        2:  208:        return(-1);
+        -:  209:    }
+        -:  210:
+       21:  211:    return(j); /*!Retorna o valor convertido para algarismo Arábico.*/
+        -:  212:}

@@ -1,0 +1,103 @@
+\hypertarget{romano_8h}{\section{/home/alexander/\-Un\-B/\-M\-P/\-Trabalho\-\_\-2\-\_\-\-M\-P\-\_\-\-Alexander\-\_\-13\-\_\-0039853/include/romano.h File Reference}
+\label{romano_8h}\index{/home/alexander/\-Un\-B/\-M\-P/\-Trabalho\-\_\-2\-\_\-\-M\-P\-\_\-\-Alexander\-\_\-13\-\_\-0039853/include/romano.\-h@{/home/alexander/\-Un\-B/\-M\-P/\-Trabalho\-\_\-2\-\_\-\-M\-P\-\_\-\-Alexander\-\_\-13\-\_\-0039853/include/romano.\-h}}
+}
+
+
+Documentação do arquivo.  
+
+
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}catch.\-hpp\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{romano_8h_a9157b5ed3275d30f901211deb7165c3f}{roman\-\_\-to\-\_\-arab} (char const nro\-\_\-rom\mbox{[}30\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Documentação do arquivo. Details. 
+
+\subsection{Function Documentation}
+\hypertarget{romano_8h_a9157b5ed3275d30f901211deb7165c3f}{\index{romano.\-h@{romano.\-h}!roman\-\_\-to\-\_\-arab@{roman\-\_\-to\-\_\-arab}}
+\index{roman\-\_\-to\-\_\-arab@{roman\-\_\-to\-\_\-arab}!romano.h@{romano.\-h}}
+\subsubsection[{roman\-\_\-to\-\_\-arab}]{\setlength{\rightskip}{0pt plus 5cm}int roman\-\_\-to\-\_\-arab (
+\begin{DoxyParamCaption}
+\item[{const char}]{nro\-\_\-rom\mbox{[}30\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{romano_8h_a9157b5ed3275d30f901211deb7165c3f}
+a roman\-\_\-to\-\_\-arab function Recebr um número R\-Omano e converte para Arábico
+
+Inclusão da biblioteca \hyperlink{romano_8h}{romano.\-h}. $<$a roman\-\_\-to\-\_\-arab function Recebe um número Romano e converte para Arábico
+
+$<$ Variável auxiliar para fazer a conversão.
+
+$<$ Variável para armazenar o tamanho da string.
+
+$<$ Variável utilizar como contador.
+
+$<$ Variável utilizar como contador.
+
+Caso nro 1 se não for letra maiúscula ou se for diferente de \char`\"{}\-I,\-V,\-X,\-L,\-C,\-D,\-M\char`\"{}
+
+Impedir as letras \char`\"{}\-V,\-L,\-D\char`\"{} duplicadas, pois podem ser representadas por \char`\"{}\-X,\-C,\-M\char`\"{} respectivamente
+
+Caso nro 2 para impedir V\-V
+
+Caso nro 3 para impedir L\-L
+
+Caso nro 4 para impedir D\-D
+
+Caso para impedir que a letra seja representada 4 vezes seguidas, por exemplo\-: \char`\"{}\-I\-I\-I\-I\char`\"{},\char`\"{}\-X\-X\-X\-X\char`\"{},\char`\"{}\-C\-C\-C\-C\char`\"{},\char`\"{}\-M\-M\-M\-M\char`\"{}
+
+Caso nro 5 para impedir I\-I\-I\-I
+
+Caso nro 6 para impedir X\-X\-X\-X
+
+Caso nro 7 para impedir C\-C\-C\-C
+
+Caso nro 8 para impedir M\-M\-M\-M
+
+Impedir casos especiais
+
+Caso nro 9 para impedir I\-I\-V e I\-I\-I\-V
+
+Caso nro 10 para impedir I\-I\-X e I\-I\-I\-X
+
+Caso nro 11 para impedir I\-I\-L e I\-I\-I\-L
+
+Caso nro 12 para impedir I\-I\-C e I\-I\-I\-C
+
+Caso nro 13 para impedir I\-I\-D e I\-I\-I\-D
+
+Caso nro 14 para impedir I\-I\-M e I\-I\-I\-M
+
+Caso nro 15 para impedir V\-X
+
+Caso nro 16 para impedir V\-I\-X, V\-I\-L, V\-I\-C, V\-I\-D, V\-I\-M
+
+Caso nro 17 para impedir X\-X\-L e X\-X\-X\-L
+
+Caso nro 18 para impedir X\-X\-C e X\-X\-X\-C
+
+Caso nro 20 para impedir X\-X\-M e X\-X\-X\-M
+
+Caso nro 21 para impedir C\-C\-D e C\-C\-C\-D
+
+Caso nro 22 para impedir C\-C\-M e C\-C\-C\-M
+
+Caso nro 23 para impedir X\-L\-X,X\-C\-X,X\-D\-X,X\-M\-X
+
+Caso nro 24 para impedir L\-C\-L,L\-D\-L,L\-M\-L
+
+Caso nro 25 para impedir C\-D\-C,C\-M\-C
+
+Caso nro 26 para impedir D\-M\-D
+
+Caso nro 27 para impedir X\-X\-I\-X\-X e C\-C\-I\-C\-C
+
+Caso nro 28 se o número for maior que 3000, ou menor que 1, retorna -\/1, pois conforme a especificação, os números devem ir até 3000
+
+Retorna o valor convertido para algarismo Arábico. 
