@@ -30,7 +30,9 @@ int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
         }
     }
 
-    /*!Impedir as letras "V,L,D" duplicadas, pois podem ser representadas por "X,C,M" respectivamente*/
+
+
+/*!Impedir as letras "V,L,D" duplicadas, pois podem ser representadas por "X,C,M" respectivamente*/
     
     for(i=0; i<tam; i++){/*!Caso nro 2 para impedir VV*/  
         if (nro_rom[i] == 'V' & nro_rom[i+1] == 'V'){ 
@@ -50,7 +52,7 @@ int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
             }
     }   
 
-    /*!Caso para impedir que a letra seja representada 4 vezes seguidas, por exemplo: "IIII","XXXX","CCCC","MMMM"*/
+/*!Caso para impedir que a letra seja representada 4 vezes seguidas, por exemplo: "IIII","XXXX","CCCC","MMMM"*/
 
     for(i=0; i<tam; i++){ /*!Caso nro 5 para impedir IIII*/
         if (nro_rom[i] == 'I' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'I'){
@@ -74,7 +76,7 @@ int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
         if (nro_rom[i] == 'M' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'M' & nro_rom[i+3] == 'M'){
             return(-1);
             }
-    }  
+    }        
 
     /*!Impedir casos especiais*/
 
@@ -115,6 +117,84 @@ int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
     }    
 
 
+    for(i=0; i<tam; i++){  /*!Caso nro 15 para impedir VX*/
+        if (nro_rom[i] == 'V' & nro_rom[i+1] == 'X' ){  
+            return(-1);
+            }
+    }                 
+
+    for(i=0; i<tam; i++){/*!Caso nro 16 para impedir VIX, VIL, VIC, VID, VIM*/
+        if (nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'X' || nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'L' || nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'C' || nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'D' || nro_rom[i] == 'V' & nro_rom[i+1] == 'I' & nro_rom[i+2] == 'M'){ 
+            return(-1);
+            }
+    }        
+
+    for(i=0; i<tam; i++){/*!Caso nro 17 para impedir XXL e XXXL*/
+        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'L' || nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'L'){
+            return(-1);
+            }
+    }    
+
+    for(i=0; i<tam; i++){/*!Caso nro 18 para impedir XXC e XXXC*/
+        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'C' || nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'C'){
+            return(-1);
+            }
+    }        
+
+    for(i=0; i<tam; i++){/*1Caso nro 19 para impedir XXD e XXXD*/
+        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'D' || nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'D'){
+            return(-1);
+            }
+    }    
+
+    for(i=0; i<tam; i++){/*!Caso nro 20 para impedir XXM e XXXM*/
+        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'X' & nro_rom[i+3] == 'M' || nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'M'){
+            return(-1);
+            }
+    }   
+
+    for(i=0; i<tam; i++){/*!Caso nro 21 para impedir CCD e CCCD*/
+        if (nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'C' & nro_rom[i+3] == 'D' || nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'D'){
+            return(-1);
+            }
+    }   
+
+    for(i=0; i<tam; i++){/*!Caso nro 22 para impedir CCM e CCCM*/
+        if (nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'C' & nro_rom[i+3] == 'M' || nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'M'){
+            return(-1);
+            }
+    }   
+
+    for(i=0; i<tam; i++){ /*!Caso nro 23 para impedir XLX,XCX,XDX,XMX*/
+        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'L' & nro_rom[i+2] == 'X' || nro_rom[i] == 'X' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'X' || nro_rom[i] == 'X' & nro_rom[i+1] == 'D' & nro_rom[i+2] == 'X' || nro_rom[i] == 'X' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'X'){ 
+            return(-1);
+            }
+    }
+
+    for(i=0; i<tam; i++){ /*!Caso nro 24 para impedir LCL,LDL,LML*/
+        if (nro_rom[i] == 'L' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'L' || nro_rom[i] == 'L' & nro_rom[i+1] == 'D' & nro_rom[i+2] == 'L' || nro_rom[i] == 'L' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'L'){ 
+            return(-1);
+            }
+    }      
+
+    for(i=0; i<tam; i++){ /*!Caso nro 25 para impedir CDC,CMC*/
+        if (nro_rom[i] == 'C' & nro_rom[i+1] == 'D' & nro_rom[i+2] == 'C' || nro_rom[i] == 'C' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'C'){ 
+            return(-1);
+            }
+    } 
+
+    for(i=0; i<tam; i++){ /*!Caso nro 26 para impedir DMD*/
+        if (nro_rom[i] == 'D' & nro_rom[i+1] == 'M' & nro_rom[i+2] == 'D'){ 
+            return(-1);
+            }
+    }                    
+
+    for(i=0; i<tam; i++){/*!Caso nro 27 para impedir XXIXX e CCICC*/
+        if (nro_rom[i] == 'X' & nro_rom[i+1] == 'X' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'X' & nro_rom[i+4] == 'X'|| nro_rom[i] == 'C' & nro_rom[i+1] == 'C' & nro_rom[i+2] == 'I' & nro_rom[i+3] == 'C' & nro_rom[i+4] == 'C'){
+            return(-1);
+            }
+    }
+
     j = aux[tam-1];
     for(i=tam-1; i>0; i--){
         if(aux[i]>aux[i-1]){
@@ -124,6 +204,9 @@ int roman_to_arab(const char nro_rom[30]){  /*!<a roman_to_arab function
         }
     }
 
+    if(j>3000 || j<0){/*!Caso nro 28 se o número for maior que 3000, ou menor que 1, retorna -1, pois conforme a especificação, os números devem ir até 3000*/
+        return(-1);
+    }
 
     return(j); /*!Retorna o valor convertido para algarismo Arábico.*/
 }
